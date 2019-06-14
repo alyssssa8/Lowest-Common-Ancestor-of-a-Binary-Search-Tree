@@ -1,0 +1,24 @@
+class Solution {
+public:
+	TreeNode * lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+
+		TreeNode *r;
+		if (p->val > q->val) {
+			swap(p, q);
+		}
+		r = root;
+
+		while (r->val < p->val || r->val > q->val) {
+			while (r->val < p->val) {  // 6 < 8
+				r = r->right;
+			}
+
+			while (r->val > q->val) { // 6 > 2
+				r = r->left;
+			}
+		}
+
+		return r;
+
+	}
+};
